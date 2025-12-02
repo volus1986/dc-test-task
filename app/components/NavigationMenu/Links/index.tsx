@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
     {
-        name: "Приходы",
-        href: "/orders"
+        name: 'Приходы',
+        href: '/orders',
     },
     {
-        name: "Продукти",
-        href: "/products"
-    }
-]
+        name: 'Продукти',
+        href: '/products',
+    },
+];
 
 export default function Links() {
     const pathname = usePathname();
@@ -24,15 +24,13 @@ export default function Links() {
             <div className="w-full h-10 flex justify-center" key={i}>
                 <Link
                     href={item.href}
-                    className={`${isActive && "underline decoration-green-500 underline-offset-8 decoration-2"}`}
+                    className={`${isActive && 'underline decoration-green-500 underline-offset-8 decoration-2'}`}
                 >
                     {item.name}
                 </Link>
             </div>
         );
-    })
+    });
 
-    return <>
-        {items}
-    </>
+    return <>{items}</>;
 }

@@ -1,4 +1,3 @@
-
 export default function Home() {
-    return <div>Orders</div>
+    return <div>Orders</div>;
 }
