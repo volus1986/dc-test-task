@@ -6,14 +6,18 @@ import { useEffect, useState } from 'react';
 
 export default function DateTime() {
     const [now, setNow] = useState(new Date());
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const timer = setInterval(() => {
             setNow(new Date());
         }, 1000);
 
         return () => clearInterval(timer);
     }, []);
+
+    if (!mounted) return null;
 
     const day = now.getDate();
     const month = now.toLocaleString('en-US', { month: 'short' }).toUpperCase();
