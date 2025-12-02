@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 
 export default function DateTime() {
     const [now, setNow] = useState(new Date());
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const timer = setInterval(() => {
             setNow(new Date());
         }, 1000);
@@ -31,7 +33,7 @@ export default function DateTime() {
                 <div>{`${day} ${month}, ${year}`}</div>
                 <div className={'ml-5 flex flex-nowrap items-center'}>
                     <Image width="16" height="16" src={clockIcon} alt="Logo" />
-                    <span className="relative ml-2">{`${time}`}</span>
+                    <span className="relative ml-2">{`${mounted && time}`}</span>
                 </div>
             </div>
         </div>
