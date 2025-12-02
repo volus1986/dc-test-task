@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import clockIcon from '@/assets/icons/header-clock.png';
+import clockIcon from './icons/header-clock.png';
 import { useEffect, useState } from 'react';
 
 export default function DateTime() {

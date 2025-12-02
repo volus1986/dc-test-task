@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import placeholderImage from '@/public/images/no-image.svg';
-import settingsImage from '@/assets/icons/profile-settings.svg';
+import settingsImage from './icons/profile-settings.svg';
 
 import Link from 'next/link';
 

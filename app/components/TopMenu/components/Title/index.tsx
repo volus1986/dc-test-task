@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import logoIcon from '@/assets/icons/logo.png';
+import logoIcon from './icons/logo.png';
 
 export default function Title() {
     return (
