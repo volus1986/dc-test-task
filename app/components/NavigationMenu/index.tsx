@@ -1,0 +1,12 @@
+import Profile from "./Profile";
+import Links from "@/app/components/NavigationMenu/Links";
+
+export default function NavigationMenu() {
+    return <div className={`
+            w-60 h-full bg-white
+            shadow-[12px_0_24px_-12px_rgba(0,0,0,0.25)]
+        `}>
+        <Profile/>
+        <Links/>
+    </div>
+}
