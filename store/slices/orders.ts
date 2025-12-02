@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ordersState {
+type ordersState = {
     id: number;
     title: string;
     date: string;
     description: string;
-}
+};
 
 const initialState: ordersState[] = [
     {
@@ -33,7 +33,7 @@ const orders = createSlice({
     initialState,
     reducers: {
         remove(state, action: PayloadAction<number>) {
-            state.filter((order) => order.id !== action.payload);
+            return state.filter((order) => order.id !== action.payload);
         },
     },
 });

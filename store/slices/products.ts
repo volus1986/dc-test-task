@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ordersState {
+type ordersState = {
     id: number;
     serialNumber: number;
     isNew: number;
@@ -19,7 +19,7 @@ interface ordersState {
     }[];
     order: number;
     date: string;
-}
+};
 
 const initialState: ordersState[] = [
     {
