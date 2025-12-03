@@ -5,7 +5,7 @@ export default function NavigationMenu() {
     return (
         <div
             className={`
-            w-60 h-full bg-[#f0f3f5]
+            flex-shrink-0 w-60 h-full bg-[#f0f3f5]
             shadow-[12px_0_24px_-12px_rgba(0,0,0,0.25)]
         `}
         >

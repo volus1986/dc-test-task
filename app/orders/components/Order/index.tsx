@@ -10,6 +10,8 @@ type propsType = {
     productIds: number[];
     amountUsd: number;
     amountUah: number;
+    hideOrderName: boolean;
+    showOrderDetailsHandler: (id: number) => void;
 };
 
 export default function Order({
@@ -19,6 +21,8 @@ export default function Order({
     productIds,
     amountUsd,
     amountUah,
+    hideOrderName,
+    showOrderDetailsHandler,
 }: propsType) {
     const date = parseDateTimeString(dateTimeString);
 
@@ -28,6 +32,8 @@ export default function Order({
 
     const showOrderDetails = () => {
         console.log(`Show order details: ${id}`); // todo: Placeholder for actual remove logic
+
+        showOrderDetailsHandler(id);
     };
 
     const getProductText = () => {
@@ -45,8 +51,12 @@ export default function Order({
 
     return (
         <div className="px-[25] py-4 flex items-center w-full border border-[#cfd8dc] rounded-sm">
-            <div className="w-[50%] overflow-hidden underline">{title}</div>
-            <div className="w-[50%] flex items-center justify-between">
+            {hideOrderName && (
+                <div className="flex flex-1 overflow-hidden underline">
+                    {title}
+                </div>
+            )}
+            <div className="flex flex-1 min-w-[340px] items-center justify-between">
                 <button
                     className="w-10 h-10 rounded-full border border-[#d0d9dd] flex items-center justify-center cursor-pointer min-w-fit"
                     onClick={showOrderDetails}
@@ -74,8 +84,6 @@ export default function Order({
                     <p className="text-[10px] text-[#90a4ae]">{`${amountUsd ? amountUsd + ' $' : ''}`}</p>
                     <p className="text-[14px] text-[#546e7a]">{`${amountUah} UAH`}</p>
                 </div>
-            </div>
-            <div>
                 <button className="w-auto cursor-pointer" onClick={removeOrder}>
                     <Image
                         src={trashIcon}

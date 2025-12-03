@@ -15,13 +15,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="h-full">
-            <body className="h-full flex flex-col">
+        <html lang="en" className="h-full min-w-full w-fit">
+            <body className="h-full min-w-full flex flex-col overflow-auto">
                 <StoreProvider>
                     <TopMenu />
                     <div className="flex flex-1">
                         <NavigationMenu />
-                        <main className="flex-1 overflow-auto">{children}</main>
+                        {children}
                     </div>
                 </StoreProvider>
             </body>

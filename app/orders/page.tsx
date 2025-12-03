@@ -5,9 +5,20 @@ import { RootState } from '@/store';
 import Order from './components/Order';
 import addButtonIcon from './icons/add-button.png';
 import Image from 'next/image';
+import { useState } from 'react';
+import OrderDetails from './components/OrderDetails';
 
 export default function Home() {
     const orderItems = useSelector((state: RootState) => state.orders);
+    const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
+
+    const handleShowOrderDetails = (orderId: number) => {
+        setOpenedOrderId(orderId);
+    };
+
+    const handleCloseOrderDetails = () => {
+        setOpenedOrderId(null);
+    };
 
     const orderElements = orderItems.map((order) => {
         return (
@@ -19,12 +30,14 @@ export default function Home() {
                 productIds={[1, 2]}
                 amountUsd={1000}
                 amountUah={100000}
+                hideOrderName={!openedOrderId}
+                showOrderDetailsHandler={handleShowOrderDetails}
             />
         );
     });
 
     return (
-        <div className="mx-32 mt-16">
+        <div className="mx-32 mt-16 bg-white w-full">
             <div className="flex items-center gap-4">
                 <button className="rounded-full cursor-pointer">
                     <Image
@@ -36,7 +49,17 @@ export default function Home() {
                 </button>
                 <span>Приходы / {orderItems.length}</span>
             </div>
-            <div className="mt-14 grid gap-2">{orderElements}</div>
+            <div className="flex mt-14">
+                <div className="grid gap-2 mr-4 w-full flex-1">
+                    {orderElements}
+                </div>
+                {openedOrderId && (
+                    <OrderDetails
+                        orderId={openedOrderId}
+                        onCloseCallback={handleCloseOrderDetails}
+                    />
+                )}
+            </div>
         </div>
     );
 }
