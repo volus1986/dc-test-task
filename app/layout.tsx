@@ -19,7 +19,7 @@ export default function RootLayout({
             <body className="h-full min-w-full flex flex-col overflow-auto">
                 <StoreProvider>
                     <TopMenu />
-                    <div className="flex flex-1">
+                    <div className="flex flex-1 bg-[#f0f3f5]">
                         <NavigationMenu />
                         {children}
                     </div>
