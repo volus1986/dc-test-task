@@ -1,15 +1,17 @@
 import Image from 'next/image';
-import trashIcon from './icons/trash.svg';
-import buttonProductListIcon from './icons/button-products-list.svg';
+import trashIcon from '@/assets/icons/trash-gray.svg';
+import buttonProductListIcon from '@/assets/icons/button-products-list-gray.svg';
 import parseDateTimeString from '@/utils/parseDateString';
+import getProductLengthText from '@/utils/getProductLengthText';
+import ButtonIcon from '@/assets/components/ButtonIcon';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import getProductPricesAmount from '@/utils/getProductsPriceAmount';
 
 type propsType = {
     id: number;
     title: string;
     dateTimeString: string;
-    productIds: number[];
-    amountUsd: number;
-    amountUah: number;
     hideOrderName: boolean;
     showOrderDetailsHandler: (id: number) => void;
 };
@@ -18,12 +20,13 @@ export default function Order({
     id,
     title,
     dateTimeString,
-    productIds,
-    amountUsd,
-    amountUah,
     hideOrderName,
     showOrderDetailsHandler,
 }: propsType) {
+    const orderProducts = useSelector(
+        (state: RootState) => state.products,
+    ).filter((product) => product.order === id);
+
     const date = parseDateTimeString(dateTimeString);
 
     const removeOrder = () => {
@@ -31,26 +34,14 @@ export default function Order({
     };
 
     const showOrderDetails = () => {
-        console.log(`Show order details: ${id}`); // todo: Placeholder for actual remove logic
-
         showOrderDetailsHandler(id);
     };
 
-    const getProductText = () => {
-        const count = productIds.length;
-        const lastTwo = count % 100;
-        const lastOne = count % 10;
-
-        if (lastTwo >= 11 && lastTwo <= 14) return 'Продуктов';
-
-        if (lastOne === 1) return 'Продукт';
-        if (lastOne >= 2 && lastOne <= 4) return 'Продукта';
-
-        return 'Продуктов';
-    };
+    const prices = orderProducts.map((orderProduct) => orderProduct.price);
+    const priceAmount = getProductPricesAmount(prices);
 
     return (
-        <div className="px-[25] py-4 flex items-center w-full border border-[#cfd8dc] rounded-sm">
+        <div className="px-[25] py-4 flex items-center w-full border border-[#cfd8dc] rounded-sm bg-white">
             {hideOrderName && (
                 <div className="flex flex-1 overflow-hidden underline">
                     {title}
@@ -70,10 +61,10 @@ export default function Order({
                 </button>
                 <div className="w-[20%] min-w-fit">
                     <p className="text-[16px] text-[#546e7a]">
-                        {productIds.length}
+                        {orderProducts.length}
                     </p>
                     <p className="text-[10px] text-[#90a4ae]">
-                        {getProductText()}
+                        {getProductLengthText(orderProducts.length)}
                     </p>
                 </div>
                 <div className="w-[25%] min-w-fit">
@@ -81,17 +72,10 @@ export default function Order({
                     <p className="text-[14px] text-[#546e7a]">{`${date.day} / ${date.monthName} / ${date.year}`}</p>
                 </div>
                 <div className="w-[25%] min-w-fit">
-                    <p className="text-[10px] text-[#90a4ae]">{`${amountUsd ? amountUsd + ' $' : ''}`}</p>
-                    <p className="text-[14px] text-[#546e7a]">{`${amountUah} UAH`}</p>
+                    <p className="text-[10px] text-[#90a4ae]">{`${priceAmount.USD ? priceAmount.USD + ' $' : ''}`}</p>
+                    <p className="text-[14px] text-[#546e7a]">{`${priceAmount.UAH} UAH`}</p>
                 </div>
-                <button className="w-auto cursor-pointer" onClick={removeOrder}>
-                    <Image
-                        src={trashIcon}
-                        alt="Remove"
-                        width="12"
-                        height="12"
-                    />
-                </button>
+                <ButtonIcon iconUrl={trashIcon} onClick={removeOrder} />
             </div>
         </div>
     );
