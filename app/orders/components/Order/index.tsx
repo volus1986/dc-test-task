@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import trashIcon from '@/assets/icons/trash-gray.svg';
+import rightIconArrow from '@/assets/icons/chevron-right-white.svg';
 import buttonProductListIcon from '@/assets/icons/button-products-list-gray.svg';
 import parseDateTimeString from '@/utils/parseDateString';
 import getProductLengthText from '@/utils/getProductLengthText';
@@ -12,7 +13,8 @@ type propsType = {
     id: number;
     title: string;
     dateTimeString: string;
-    hideOrderName: boolean;
+    showSimplified: boolean;
+    isOpened: boolean;
     showOrderDetailsHandler: (id: number) => void;
 };
 
@@ -20,7 +22,8 @@ export default function Order({
     id,
     title,
     dateTimeString,
-    hideOrderName,
+    showSimplified,
+    isOpened,
     showOrderDetailsHandler,
 }: propsType) {
     const orderProducts = useSelector(
@@ -41,42 +44,73 @@ export default function Order({
     const priceAmount = getProductPricesAmount(prices);
 
     return (
-        <div className="px-[25] py-4 flex items-center w-full border border-[#cfd8dc] rounded-sm bg-white">
-            {hideOrderName && (
-                <div className="flex flex-1 overflow-hidden underline">
-                    {title}
+        <div className="flex w-full border border-[#cfd8dc] rounded-sm bg-white justify-between">
+            <div
+                className={`
+                    px-[25] py-4 flex items-center
+                    ${!showSimplified && 'w-full'}
+                `}
+            >
+                {!showSimplified && (
+                    <div className="flex flex-1 overflow-hidden underline">
+                        {title}
+                    </div>
+                )}
+                <div className="flex flex-1 items-center justify-between">
+                    <button
+                        className="w-10 h-10 rounded-full border border-[#d0d9dd] flex items-center justify-center cursor-pointer min-w-fit"
+                        onClick={showOrderDetails}
+                    >
+                        <Image
+                            src={buttonProductListIcon}
+                            alt="Remove"
+                            width="22"
+                            height="22"
+                        />
+                    </button>
+                    <div className="w-14 ml-4">
+                        <p className="text-[16px] text-[#546e7a]">
+                            {orderProducts.length}
+                        </p>
+                        <p className="text-[10px] text-[#90a4ae]">
+                            {getProductLengthText(orderProducts.length)}
+                        </p>
+                    </div>
+                    <div className="w-32 min-w-fit ml-9">
+                        <p className="text-[10px] text-[#90a4ae]">{`${date.monthNumber} / ${date.year}`}</p>
+                        <p className="text-[14px] text-[#546e7a]">{`${date.day} / ${date.monthName} / ${date.year}`}</p>
+                    </div>
+                    {!showSimplified && (
+                        <>
+                            <div className="w-28 min-w-fit">
+                                <p className="text-[10px] text-[#90a4ae]">{`${priceAmount.USD ? priceAmount.USD + ' $' : ''}`}</p>
+                                <p className="text-[14px] text-[#546e7a]">{`${priceAmount.UAH ?? 0} UAH`}</p>
+                            </div>
+                            <ButtonIcon
+                                iconUrl={trashIcon}
+                                onClick={removeOrder}
+                            />
+                        </>
+                    )}
+                </div>
+            </div>
+            {showSimplified && (
+                <div
+                    className={`
+                     flex justify-center items-center w-[45px] grow-0 shrink-0
+                    ${isOpened ? 'bg-[#cfd8dc] ' : ''}
+                    `}
+                >
+                    {isOpened && (
+                        <Image
+                            src={rightIconArrow}
+                            alt=">"
+                            width={12}
+                            height={12}
+                        />
+                    )}
                 </div>
             )}
-            <div className="flex flex-1 min-w-[340px] items-center justify-between">
-                <button
-                    className="w-10 h-10 rounded-full border border-[#d0d9dd] flex items-center justify-center cursor-pointer min-w-fit"
-                    onClick={showOrderDetails}
-                >
-                    <Image
-                        src={buttonProductListIcon}
-                        alt="Remove"
-                        width="22"
-                        height="22"
-                    />
-                </button>
-                <div className="w-[20%] min-w-fit">
-                    <p className="text-[16px] text-[#546e7a]">
-                        {orderProducts.length}
-                    </p>
-                    <p className="text-[10px] text-[#90a4ae]">
-                        {getProductLengthText(orderProducts.length)}
-                    </p>
-                </div>
-                <div className="w-[25%] min-w-fit">
-                    <p className="text-[10px] text-[#90a4ae]">{`${date.monthNumber} / ${date.year}`}</p>
-                    <p className="text-[14px] text-[#546e7a]">{`${date.day} / ${date.monthName} / ${date.year}`}</p>
-                </div>
-                <div className="w-[25%] min-w-fit">
-                    <p className="text-[10px] text-[#90a4ae]">{`${priceAmount.USD ? priceAmount.USD + ' $' : ''}`}</p>
-                    <p className="text-[14px] text-[#546e7a]">{`${priceAmount.UAH} UAH`}</p>
-                </div>
-                <ButtonIcon iconUrl={trashIcon} onClick={removeOrder} />
-            </div>
         </div>
     );
 }

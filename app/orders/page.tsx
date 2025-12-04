@@ -27,7 +27,8 @@ export default function Home() {
                 id={order.id}
                 title={order.title}
                 dateTimeString={order.date}
-                hideOrderName={!openedOrderId}
+                showSimplified={!!openedOrderId}
+                isOpened={openedOrderId === order.id}
                 showOrderDetailsHandler={handleShowOrderDetails}
             />
         );
