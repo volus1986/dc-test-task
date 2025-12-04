@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type ordersState = {
+type productsState = {
     id: number;
-    serialNumber: number;
+    serialNumber: number | string;
     isNew: number;
     photo: string;
     title: string;
@@ -21,12 +21,12 @@ type ordersState = {
     date: string;
 };
 
-const initialState: ordersState[] = [
+const initialState: productsState[] = [
     {
         id: 1,
         serialNumber: 1234,
         isNew: 1,
-        photo: 'pathToFile.jpg',
+        photo: '/pathToFile.jpg',
         title: 'Product 1',
         type: 'Monitors',
         specification: 'Specification 1',
@@ -45,7 +45,83 @@ const initialState: ordersState[] = [
         id: 2,
         serialNumber: 1234,
         isNew: 1,
-        photo: 'pathToFile.jpg',
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 1,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 3,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 1,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 4,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 1,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 5,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 1,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 6,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
         title: 'Product 1',
         type: 'Monitors',
         specification: 'Specification 1',
@@ -62,7 +138,7 @@ const initialState: ordersState[] = [
     },
 ];
 
-const orders = createSlice({
+const products = createSlice({
     name: 'products',
     initialState,
     reducers: {
@@ -72,5 +148,5 @@ const orders = createSlice({
     },
 });
 
-export const { remove } = orders.actions;
-export default orders.reducer;
+export const { remove } = products.actions;
+export default products.reducer;
