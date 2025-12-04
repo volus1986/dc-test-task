@@ -27,9 +27,6 @@ export default function Home() {
                 id={order.id}
                 title={order.title}
                 dateTimeString={order.date}
-                productIds={[1, 2]}
-                amountUsd={1000}
-                amountUah={100000}
                 hideOrderName={!openedOrderId}
                 showOrderDetailsHandler={handleShowOrderDetails}
             />
@@ -37,7 +34,7 @@ export default function Home() {
     });
 
     return (
-        <div className="mx-32 mt-16 bg-white w-full">
+        <div className="mx-32 mt-16 w-full h-fit">
             <div className="flex items-center gap-4">
                 <button className="rounded-full cursor-pointer">
                     <Image
@@ -50,7 +47,7 @@ export default function Home() {
                 <span>Приходы / {orderItems.length}</span>
             </div>
             <div className="flex mt-14">
-                <div className="grid gap-2 mr-4 w-full flex-1">
+                <div className="grid gap-2 mr-4 w-full flex-1 h-fit">
                     {orderElements}
                 </div>
                 {openedOrderId && (
