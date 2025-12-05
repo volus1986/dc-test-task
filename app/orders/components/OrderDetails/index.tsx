@@ -33,7 +33,7 @@ export default function OrderDetails({ orderId, onCloseCallback }: Props) {
     });
 
     return (
-        <div className="border border-[#cfd8dc] border-b-0 rounded-sm relative w-[960px] h-fit bg-white">
+        <div className="border border-[#cfd8dc] border-b-0 rounded-sm relative h-fit bg-white w-fit min-w-[700px]">
             <button
                 className="absolute -right-6 -top-6 bg-white cursor-pointer w-11 h-11 flex items-center justify-center rounded-full shadow-[4px_4px_8px_rgba(0,0,0,0.25)]"
                 onClick={onCloseCallback}

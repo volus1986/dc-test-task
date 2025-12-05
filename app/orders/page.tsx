@@ -35,7 +35,7 @@ export default function Home() {
     });
 
     return (
-        <div className="mx-32 mt-16 w-full h-fit">
+        <div className="pl-32 mt-16 w-full h-fit">
             <div className="flex items-center gap-4">
                 <button className="rounded-full cursor-pointer">
                     <Image
@@ -48,14 +48,18 @@ export default function Home() {
                 <span>Приходы / {orderItems.length}</span>
             </div>
             <div className="flex mt-14">
-                <div className="grid gap-2 mr-4 w-full flex-1 h-fit">
+                <div
+                    className={`grid gap-2 mr-4 ${openedOrderId ? 'w-fit' : 'w-full'} h-fit`}
+                >
                     {orderElements}
                 </div>
                 {openedOrderId && (
-                    <OrderDetails
-                        orderId={openedOrderId}
-                        onCloseCallback={handleCloseOrderDetails}
-                    />
+                    <div className="pr-12">
+                        <OrderDetails
+                            orderId={openedOrderId}
+                            onCloseCallback={handleCloseOrderDetails}
+                        />
+                    </div>
                 )}
             </div>
         </div>
