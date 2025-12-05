@@ -1,5 +1,5 @@
 import Profile from './Profile';
-import Links from '@/app/components/NavigationMenu/Links';
+import Links from '@/src/app/components/NavigationMenu/Links';
 
 export default function NavigationMenu() {
     return (

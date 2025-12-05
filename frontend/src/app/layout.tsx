@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import TopMenu from '@/app/components/TopMenu';
-import NavigationMenu from '@/app/components/NavigationMenu';
-import StoreProvider from '@/store/Provider';
-import { PopupProvider } from '@/components/RemovePopup';
+import TopMenu from '@/src/app/components/TopMenu';
+import NavigationMenu from '@/src/app/components/NavigationMenu';
+import StoreProvider from '@/src/store/Provider';
+import { PopupProvider } from '@/src/components/RemovePopup';
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {

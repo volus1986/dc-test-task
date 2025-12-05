@@ -1,14 +1,14 @@
 import Image from 'next/image';
-import trashIcon from '@/assets/icons/trash-gray.svg';
-import rightIconArrow from '@/assets/icons/chevron-right-white.svg';
-import buttonProductListIcon from '@/assets/icons/button-products-list-gray.svg';
-import parseDateTimeString from '@/utils/parseDateString';
-import getProductLengthText from '@/utils/getProductLengthText';
-import ButtonIcon from '@/components/ButtonIcon';
+import trashIcon from '@/src/assets/icons/trash-gray.svg';
+import rightIconArrow from '@/src/assets/icons/chevron-right-white.svg';
+import buttonProductListIcon from '@/src/assets/icons/button-products-list-gray.svg';
+import parseDateTimeString from '@/src/utils/parseDateString';
+import getProductLengthText from '@/src/utils/getProductLengthText';
+import ButtonIcon from '@/src/components/ButtonIcon';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import getProductPricesAmount from '@/utils/getProductsPriceAmount';
-import usePopup from '@/components/RemovePopup';
+import getProductPricesAmount from '@/src/utils/getProductsPriceAmount';
+import usePopup from '@/src/components/RemovePopup';
 
 type propsType = {
     id: number;

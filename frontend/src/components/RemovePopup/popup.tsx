@@ -1,5 +1,5 @@
-import closeIcon from '@/assets/icons/x-gray.svg';
-import trashIcon from '@/assets/icons/trash-red.svg';
+import closeIcon from '@/src/assets/icons/x-gray.svg';
+import trashIcon from '@/src/assets/icons/trash-red.svg';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 

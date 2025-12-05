@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ProductStatusIcon from '@/app/components/ProductStatusIcon';
-import ButtonIcon from '@/components/ButtonIcon';
-import trashIcon from '@/assets/icons/trash-gray.svg';
+import ProductStatusIcon from '@/src/app/components/ProductStatusIcon';
+import ButtonIcon from '@/src/components/ButtonIcon';
+import trashIcon from '@/src/assets/icons/trash-gray.svg';
 
 export type Props = {
     id: number;

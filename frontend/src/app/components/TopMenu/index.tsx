@@ -1,5 +1,5 @@
 import Title from './components/Title';
-import DateTime from '@/app/components/TopMenu/components/DateTime';
+import DateTime from '@/src/app/components/TopMenu/components/DateTime';
 
 export default function TopMenu() {
     return (

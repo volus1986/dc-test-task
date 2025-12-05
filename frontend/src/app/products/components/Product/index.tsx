@@ -1,9 +1,9 @@
-import trashIcon from '@/assets/icons/trash-gray.svg';
-import parseDateTimeString from '@/utils/parseDateString';
-import ButtonIcon from '@/components/ButtonIcon';
+import trashIcon from '@/src/assets/icons/trash-gray.svg';
+import parseDateTimeString from '@/src/utils/parseDateString';
+import ButtonIcon from '@/src/components/ButtonIcon';
 import ProductStatusIcon, {
     STATUSES,
-} from '@/app/components/ProductStatusIcon';
+} from '@/src/app/components/ProductStatusIcon';
 import Image from 'next/image';
 
 type propsType = {
