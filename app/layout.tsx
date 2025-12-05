@@ -3,6 +3,8 @@ import './globals.css';
 import TopMenu from '@/app/components/TopMenu';
 import NavigationMenu from '@/app/components/NavigationMenu';
 import StoreProvider from '@/store/Provider';
+import { PopupProvider } from '@/components/RemovePopup';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
     title: 'Orders & Products',
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) {
     return (
         <html lang="en" className="h-full min-w-full w-fit">
@@ -21,7 +23,9 @@ export default function RootLayout({
                     <TopMenu />
                     <div className="flex flex-1 bg-[#f0f3f5]">
                         <NavigationMenu />
-                        {children}
+                        <div className="relative w-full">
+                            <PopupProvider>{children}</PopupProvider>
+                        </div>
                     </div>
                 </StoreProvider>
             </body>

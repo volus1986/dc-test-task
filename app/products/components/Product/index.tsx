@@ -1,6 +1,6 @@
 import trashIcon from '@/assets/icons/trash-gray.svg';
 import parseDateTimeString from '@/utils/parseDateString';
-import ButtonIcon from '@/assets/components/ButtonIcon';
+import ButtonIcon from '@/components/ButtonIcon';
 import ProductStatusIcon, {
     STATUSES,
 } from '@/app/components/ProductStatusIcon';
@@ -111,7 +111,7 @@ export default function Product({
                     <p className="text-[14px] text-[#546e7a]">{`${priceUAH ?? 0} UAH`}</p>
                 </div>
 
-                <div className="ml-2 w-[400] flex overflow-hidden h-full">
+                <div className="ml-2 w-[400px] flex overflow-hidden h-full">
                     <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
                         {orderName}
                     </span>

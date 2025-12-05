@@ -1,27 +1,21 @@
 import closeIcon from '@/assets/icons/x-gray.svg';
 import trashIcon from '@/assets/icons/trash-red.svg';
-import { ReactNode } from 'react';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 
-type Props = {
+export type PopupOptions = {
     title: string;
-    onClose?: () => void;
     onAccept?: () => void;
     onDecline?: () => void;
-    children?: ReactNode;
+    content?: ReactNode;
 };
 
-export default function RemoveOrderPopup({
+export default function Popup({
     title,
-    onClose,
     onAccept,
     onDecline,
-    children,
-}: Props) {
-    const handleClose = () => {
-        onClose?.();
-    };
-
+    content,
+}: PopupOptions) {
     const handleAccept = () => {
         onAccept?.();
     };
@@ -31,11 +25,16 @@ export default function RemoveOrderPopup({
     };
 
     return (
-        <div className="absolute w-full h-full bg-[#000000]/50 flex justify-center items-center left-0 top-0">
+        <div
+            className="absolute w-full h-full bg-[#000000]/50 flex justify-center items-center left-0 top-0"
+            onClick={handleDecline}
+        >
             <div className="relative bg-white w-[798px]">
                 <button
-                    className="absolute -right-6 -top-6 bg-white cursor-pointer w-11 h-11 flex items-center justify-center rounded-full shadow-[4px_4px_8px_rgba(0,0,0,0.25)]"
-                    onClick={handleClose}
+                    className="absolute -right-6 -top-6
+                    bg-white cursor-pointer w-11 h-11 shadow-[4px_4px_8px_rgba(0,0,0,0.25)]
+                    flex items-center justify-center rounded-full"
+                    onClick={handleDecline}
                 >
                     <img
                         width={22}
@@ -49,17 +48,17 @@ export default function RemoveOrderPopup({
                         <p className="">{title}</p>
                     </div>
 
-                    {children}
+                    {content}
                 </div>
                 <div className="pt-[14px] px-9 pb-[18px] flex justify-end h-[116px] items-center gap-5 bg-[#86bd47] w-full">
                     <button
-                        className="text-white font-bold"
+                        className="text-white font-bold cursor-pointer"
                         onClick={handleDecline}
                     >
                         ОТМЕНИТЬ
                     </button>
                     <button
-                        className="h-10 w-[178px] text-[#e8364f] flex justify-center items-center gap-4 rounded-full bg-white"
+                        className="h-10 w-[178px] text-[#e8364f] flex justify-center items-center gap-4 rounded-full bg-white cursor-pointer"
                         onClick={handleAccept}
                     >
                         <Image

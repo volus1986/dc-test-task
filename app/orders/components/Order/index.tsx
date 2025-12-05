@@ -4,10 +4,11 @@ import rightIconArrow from '@/assets/icons/chevron-right-white.svg';
 import buttonProductListIcon from '@/assets/icons/button-products-list-gray.svg';
 import parseDateTimeString from '@/utils/parseDateString';
 import getProductLengthText from '@/utils/getProductLengthText';
-import ButtonIcon from '@/assets/components/ButtonIcon';
+import ButtonIcon from '@/components/ButtonIcon';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import getProductPricesAmount from '@/utils/getProductsPriceAmount';
+import usePopup from '@/components/RemovePopup';
 
 type propsType = {
     id: number;
@@ -26,15 +27,12 @@ export default function Order({
     isOpened,
     showOrderDetailsHandler,
 }: propsType) {
+    const RemovePopup = usePopup();
     const orderProducts = useSelector(
         (state: RootState) => state.products,
     ).filter((product) => product.order === id);
 
     const date = parseDateTimeString(dateTimeString);
-
-    const removeOrder = () => {
-        console.log(`Remove order with id: ${id}`); // todo: Placeholder for actual remove logic
-    };
 
     const showOrderDetails = () => {
         showOrderDetailsHandler(id);
@@ -43,8 +41,20 @@ export default function Order({
     const prices = orderProducts.map((orderProduct) => orderProduct.price);
     const priceAmount = getProductPricesAmount(prices);
 
+    const removeOrderClickHandler = () => {
+        RemovePopup.openPopup({
+            title: 'Вы уверены что хотите удалить этот приход?',
+            onAccept: () => {
+                console.log(`Order with id ${id} removed`);
+            },
+            onDecline: () => {
+                console.log('Order removal cancelled');
+            },
+        });
+    };
+
     return (
-        <div className="flex w-full border border-[#cfd8dc] rounded-sm bg-white justify-between">
+        <div className="flex border border-[#cfd8dc] rounded-sm bg-white justify-between max-w-[1200px]">
             <div
                 className={`
                     px-[25] py-4 flex items-center
@@ -93,7 +103,7 @@ export default function Order({
                             </div>
                             <ButtonIcon
                                 iconUrl={trashIcon}
-                                onClick={removeOrder}
+                                onClick={removeOrderClickHandler}
                             />
                         </>
                     )}

@@ -32,10 +32,12 @@ export default function Home() {
     });
 
     return (
-        <div className="mx-32 mt-16 w-full h-fit">
-            <span>Продукты / {orderItems.length}</span>
+        <div className="px-32 pt-16 w-full h-fit">
+            <span className="font-extrabold">
+                Продукты / {productItems.length}
+            </span>
             <div className="flex mt-14">
-                <div className="grid gap-2 mr-4 w-full flex-1">
+                <div className="grid gap-2 mr-4 w-full auto-cols-max">
                     {productElements}
                 </div>
             </div>

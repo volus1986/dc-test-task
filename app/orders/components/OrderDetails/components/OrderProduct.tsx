@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ProductStatusIcon from '@/app/components/ProductStatusIcon';
-import ButtonIcon from '@/assets/components/ButtonIcon';
+import ButtonIcon from '@/components/ButtonIcon';
 import trashIcon from '@/assets/icons/trash-gray.svg';
 
 export type Props = {
