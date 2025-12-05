@@ -2,13 +2,11 @@
 
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { useState } from 'react';
 import Product from './components/Product';
 
 export default function Home() {
     const orderItems = useSelector((state: RootState) => state.orders);
     const productItems = useSelector((state: RootState) => state.products);
-    const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
 
     const productElements = productItems.map((product) => {
         const order = orderItems.find(
@@ -27,7 +25,6 @@ export default function Home() {
                 guaranteeEnd={product.guarantee.end}
                 isNew={!!product.isNew}
                 prices={product.price}
-                groupName={''}
                 orderName={order.title}
                 orderDateTimeString={order.date}
             />

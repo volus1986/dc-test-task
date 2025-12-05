@@ -19,8 +19,6 @@ type propsType = {
         value: number;
         symbol: string;
     }[];
-    groupName: string;
-    userName?: string;
     orderName: string;
     orderDateTimeString: string;
 };
@@ -35,8 +33,6 @@ export default function Product({
     guaranteeEnd,
     isNew,
     prices,
-    groupName,
-    userName,
     orderName,
     orderDateTimeString,
 }: propsType) {
@@ -58,11 +54,15 @@ export default function Product({
         return (
             <div>
                 <div className="flex justify-between">
-                    <div className="text-[10px] text-[#90a4ae]">c</div>
+                    <div className="flex items-center text-[10px] text-[#90a4ae]">
+                        c
+                    </div>
                     <div className="text-[14px] text-[#546e7a]">{`${dateFrom.day} / ${dateFrom.monthNumber} / ${dateFrom.year}`}</div>
                 </div>
                 <div className="flex justify-between">
-                    <div className="text-[10px] text-[#90a4ae]">по</div>
+                    <div className="flex items-center text-[10px] text-[#90a4ae]">
+                        по
+                    </div>
                     <div className="text-[14px] text-[#546e7a]">{`${dateTo.day} / ${dateTo.monthNumber} / ${dateTo.year}`}</div>
                 </div>
             </div>
@@ -100,7 +100,7 @@ export default function Product({
 
                 <div className="ml-12 w-30">{statusTextRender()}</div>
 
-                <div className="ml-2 w-36">{guaranteeDatesRender()}</div>
+                <div className="ml-2 w-28">{guaranteeDatesRender()}</div>
 
                 <div className="ml-10 w-32 text-[14px] text-[#546e7a]">
                     {isNew ? 'новый' : 'Б / У'}
@@ -109,18 +109,6 @@ export default function Product({
                 <div className="ml-2 w-[140px]">
                     <p className="text-[10px] text-[#90a4ae]">{`${priceUSD ? priceUSD + ' $' : ''}`}</p>
                     <p className="text-[14px] text-[#546e7a]">{`${priceUAH ?? 0} UAH`}</p>
-                </div>
-
-                <div className="ml-2 w-[400px] flex overflow-hidden h-full">
-                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
-                        {groupName || '-'}
-                    </span>
-                </div>
-
-                <div className="ml-2 w-[280] flex overflow-hidden h-full">
-                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
-                        {userName || '-'}
-                    </span>
                 </div>
 
                 <div className="ml-2 w-[400] flex overflow-hidden h-full">
