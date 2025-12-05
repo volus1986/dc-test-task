@@ -12,7 +12,7 @@ export default function ProductStatusIcon({ status }: Props) {
         {
             [STATUSES.free]: '#cddc39',
             [STATUSES.repairing]: '#000000',
-        }[status] ?? '#808080';
+        }[status] ?? '#cddc39';
     return (
         <div
             style={{ backgroundColor: color }}

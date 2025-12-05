@@ -58,12 +58,12 @@ export default function Product({
         return (
             <div>
                 <div className="flex justify-between">
-                    <div>c</div>
-                    <div>{`${dateFrom.day} / ${dateFrom.monthNumber} / ${dateFrom.year}`}</div>
+                    <div className="text-[10px] text-[#90a4ae]">c</div>
+                    <div className="text-[14px] text-[#546e7a]">{`${dateFrom.day} / ${dateFrom.monthNumber} / ${dateFrom.year}`}</div>
                 </div>
                 <div className="flex justify-between">
-                    <div>по</div>
-                    <div>{`${dateTo.day} / ${dateTo.monthNumber} / ${dateTo.year}`}</div>
+                    <div className="text-[10px] text-[#90a4ae]">по</div>
+                    <div className="text-[14px] text-[#546e7a]">{`${dateTo.day} / ${dateTo.monthNumber} / ${dateTo.year}`}</div>
                 </div>
             </div>
         );
@@ -83,49 +83,57 @@ export default function Product({
     const priceUSD = prices.find((price) => price.symbol === 'USD')?.value;
 
     return (
-        <div className="px-[25] py-4 flex items-center w-full border border-[#cfd8dc] rounded-sm">
-            <div className="flex flex-1 min-w-[340px] items-center justify-between">
+        <div className="px-[25] py-4 flex items-center w-full bg-white border border-[#cfd8dc] rounded-sm">
+            <div className="h-10 flex min-w-[640px] items-center overflow-hidden">
                 <ProductStatusIcon status={status} />
 
-                <Image src={imageUrl} alt="Img" width={48} height={48} />
+                <div className="ml-8 w-11">
+                    <Image src={imageUrl} alt="Img" width={48} height={48} />
+                </div>
 
-                <div className="grow">
-                    <p className="underline decoration-gray-500">{title}</p>
+                <div className="ml-8 w-[432px] overflow-hidden h-full">
+                    <p className="underline decoration-gray-500 text-[14px] text-[#546e7a] text-nowrap overflow-hidden pl-1">
+                        {title}
+                    </p>
                     <p>{serialNumber}</p>
                 </div>
 
-                <div>{statusTextRender()}</div>
+                <div className="ml-12 w-30">{statusTextRender()}</div>
 
-                <div>{guaranteeDatesRender()}</div>
+                <div className="ml-2 w-36">{guaranteeDatesRender()}</div>
 
-                <div>{isNew ? 'новый' : 'Б / У'}</div>
+                <div className="ml-10 w-32 text-[14px] text-[#546e7a]">
+                    {isNew ? 'новый' : 'Б / У'}
+                </div>
 
-                <div className="w-28 min-w-fit">
+                <div className="ml-2 w-[140px]">
                     <p className="text-[10px] text-[#90a4ae]">{`${priceUSD ? priceUSD + ' $' : ''}`}</p>
                     <p className="text-[14px] text-[#546e7a]">{`${priceUAH ?? 0} UAH`}</p>
                 </div>
 
-                <div className="flex items-center">
-                    <span className="underline decoration-gray-500">
+                <div className="ml-2 w-[400px] flex overflow-hidden h-full">
+                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
                         {groupName || '-'}
                     </span>
                 </div>
 
-                <div className="flex items-center">
-                    <span className="underline decoration-gray-500">
+                <div className="ml-2 w-[280] flex overflow-hidden h-full">
+                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
                         {userName || '-'}
                     </span>
                 </div>
 
-                <div className="flex items-center">
-                    <span className="underline decoration-gray-500">
+                <div className="ml-2 w-[400] flex overflow-hidden h-full">
+                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
                         {orderName}
                     </span>
                 </div>
 
-                <div>{orderDateRender()}</div>
+                <div className="ml-2 w-32">{orderDateRender()}</div>
 
-                <ButtonIcon onClick={removeProduct} iconUrl={trashIcon} />
+                <div className="ml-7">
+                    <ButtonIcon onClick={removeProduct} iconUrl={trashIcon} />
+                </div>
             </div>
         </div>
     );

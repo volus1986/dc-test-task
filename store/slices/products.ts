@@ -27,7 +27,7 @@ const initialState: productsState[] = [
         serialNumber: 1234,
         isNew: 1,
         photo: '/pathToFile.jpg',
-        title: 'Product 1',
+        title: 'Product 1 very long name example to check overflow asdkljfh askjdfh sakdjfh sajkdfh asdkjfh asdkjfh asdkjfh asdkjfh asdkjfh 12345',
         type: 'Monitors',
         specification: 'Specification 1',
         guarantee: {

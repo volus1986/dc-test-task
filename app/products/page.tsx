@@ -35,7 +35,7 @@ export default function Home() {
     });
 
     return (
-        <div className="mx-32 mt-16 bg-white w-full h-fit">
+        <div className="mx-32 mt-16 w-full h-fit">
             <span>Продукты / {orderItems.length}</span>
             <div className="flex mt-14">
                 <div className="grid gap-2 mr-4 w-full flex-1">
