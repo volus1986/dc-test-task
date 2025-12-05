@@ -26,18 +26,24 @@ export default function OrderProduct({
         <div
             className="
                 border-b border-[#cfd8dc]
-                px-10 py-3 flex items-center justify-items-stretch gap-8
+                px-10 py-3 flex items-center gap-8
             "
         >
-            <ProductStatusIcon status={status} />
-            <Image src={imageUrl} alt="Img" width={48} height={48} />
-            <div className="grow">
-                <p className="underline decoration-gray-500 text-nowrap">
+            <div className="w-fit flex items-center">
+                <ProductStatusIcon status={status} />
+            </div>
+            <div className="w-fit flex items-center">
+                <Image src={imageUrl} alt="Img" width={48} height={48} />
+            </div>
+            <div className="w-full">
+                <div className="underline decoration-gray-500 text-nowrap">
                     {title}
-                </p>
+                </div>
                 <p>{serialNumber}</p>
             </div>
-            <ButtonIcon iconUrl={trashIcon} onClick={handleRemove} />
+            <div className="flex items-center w-3">
+                <ButtonIcon iconUrl={trashIcon} onClick={handleRemove} />
+            </div>
         </div>
     );
 }
