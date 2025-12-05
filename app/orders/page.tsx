@@ -45,7 +45,9 @@ export default function Home() {
                         height="39"
                     />
                 </button>
-                <span>Приходы / {orderItems.length}</span>
+                <span className="font-extrabold">
+                    Приходы / {orderItems.length}
+                </span>
             </div>
             <div className="flex mt-14">
                 <div
