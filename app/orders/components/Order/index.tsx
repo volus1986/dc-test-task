@@ -52,11 +52,16 @@ export default function Order({
                 `}
             >
                 {!showSimplified && (
-                    <div className="flex flex-1 overflow-hidden underline">
+                    <div className="flex flex-1 overflow-hidden underline text-nowrap">
                         {title}
                     </div>
                 )}
-                <div className="flex flex-1 items-center justify-between">
+                <div
+                    className={`
+                    flex flex-1 items-center justify-between
+                    ${!showSimplified && 'ml-2'}
+                `}
+                >
                     <button
                         className="w-10 h-10 rounded-full border border-[#d0d9dd] flex items-center justify-center cursor-pointer min-w-fit"
                         onClick={showOrderDetails}

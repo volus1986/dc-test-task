@@ -40,7 +40,7 @@ export default function OrderDetails({ orderId, onCloseCallback }: Props) {
             >
                 <img width={22} height={22} src={closeIcon.src} alt="close" />
             </button>
-            <h3 className="pt-8 px-8">{order?.title ?? ''}</h3>
+            <h3 className="pt-8 px-8 text-nowrap">{order?.title ?? ''}</h3>
             <div className="mt-2 px-8 pb-2  flex items-center border-b border-b-[#f0f3f5]">
                 <button
                     className="w-4 h-4 flex items-center rounded-full cursor-pointer bg-[#8bc34a]"

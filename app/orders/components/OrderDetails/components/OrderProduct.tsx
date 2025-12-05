@@ -32,7 +32,9 @@ export default function OrderProduct({
             <ProductStatusIcon status={status} />
             <Image src={imageUrl} alt="Img" width={48} height={48} />
             <div className="grow">
-                <p className="underline decoration-gray-500">{title}</p>
+                <p className="underline decoration-gray-500 text-nowrap">
+                    {title}
+                </p>
                 <p>{serialNumber}</p>
             </div>
             <ButtonIcon iconUrl={trashIcon} onClick={handleRemove} />
