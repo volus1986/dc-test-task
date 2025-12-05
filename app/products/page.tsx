@@ -7,33 +7,35 @@ import Product from './components/Product';
 
 export default function Home() {
     const orderItems = useSelector((state: RootState) => state.orders);
+    const productItems = useSelector((state: RootState) => state.products);
     const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
 
-    const handleShowOrderDetails = (orderId: number) => {
-        setOpenedOrderId(orderId);
-    };
+    const productElements = productItems.map((product) => {
+        const order = orderItems.find(
+            (order) => order.id === product.order,
+        ) ?? { title: '', date: '' };
 
-    const handleCloseOrderDetails = () => {
-        setOpenedOrderId(null);
-    };
-
-    const productElements = orderItems.map((order) => {
         return (
             <Product
-                key={order.id}
-                id={order.id}
-                title={order.title}
-                dateTimeString={order.date}
-                productIds={[1, 2]}
-                amountUsd={1000}
-                amountUah={100000}
-                hideOrderName={!openedOrderId}
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                status={''}
+                imageUrl={product.photo}
+                serialNumber={product.serialNumber}
+                guaranteeStart={product.guarantee.start}
+                guaranteeEnd={product.guarantee.end}
+                isNew={!!product.isNew}
+                prices={product.price}
+                groupName={''}
+                orderName={order.title}
+                orderDateTimeString={order.date}
             />
         );
     });
 
     return (
-        <div className="mx-32 mt-16 bg-white w-full">
+        <div className="mx-32 mt-16 bg-white w-full h-fit">
             <span>Продукты / {orderItems.length}</span>
             <div className="flex mt-14">
                 <div className="grid gap-2 mr-4 w-full flex-1">
