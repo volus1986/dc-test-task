@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: nest_backend_prod
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+
+    ports:
+      - "3001:3001"
+
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+
+    restart: always
+
+  # --- 2. Next.js Frontend (3000) ---
+  frontend:
+    container_name: next_frontend_prod
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_BACKEND_URL: http://backend:3001
+
+    depends_on:
+      - backend
+
+    restart: always
