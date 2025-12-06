@@ -1,7 +1,7 @@
 import plusIcon from '@/src/assets/icons/plus-white.svg';
 import closeIcon from '@/src/assets/icons/x-gray.svg';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { RootState } from '@/src/store';
 import OrderProduct from '@/src/app/orders/components/OrderDetails/components/OrderProduct';
 import { STATUSES } from '@/src/app/components/ProductStatusIcon';
 

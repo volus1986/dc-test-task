@@ -1,7 +1,7 @@
 'use client';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { RootState } from '@/src/store';
 import Order from './components/Order';
 import addButtonIcon from './icons/add-button.png';
 import Image from 'next/image';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { RootState } from '@/src/store';
 import Product from './components/Product';
 
 export default function Home() {

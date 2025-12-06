@@ -6,7 +6,7 @@ import parseDateTimeString from '@/src/utils/parseDateString';
 import getProductLengthText from '@/src/utils/getProductLengthText';
 import ButtonIcon from '@/src/components/ButtonIcon';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { RootState } from '@/src/store';
 import getProductPricesAmount from '@/src/utils/getProductsPriceAmount';
 import usePopup from '@/src/components/RemovePopup';
 
