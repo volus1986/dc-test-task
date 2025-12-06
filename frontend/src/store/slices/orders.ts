@@ -1,42 +1,72 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { BACKEND_URL } from '@/lib/config';
 
-type ordersState = {
+type Order = {
     id: number;
     title: string;
     date: string;
     description: string;
 };
 
-const initialState: ordersState[] = [
-    {
-        id: 1,
-        title: 'Order 1 very long name example to check overflow askdjfhkasdfh gksajgdfh dksfjgh asdfg askjdfh saikjdfh difughsidufhg ksdjfh iuwe fiasdf hsakdfh iuse',
-        date: '2017-06-29 12:09:33',
-        description: 'desc',
+type OrdersState = {
+    orders: Order[];
+    loading: 'idle' | 'pending' | 'succeeded' | 'failed';
+    error: string | null;
+};
+
+const initialState: OrdersState = {
+    orders: [],
+    loading: 'idle',
+    error: null,
+};
+
+export const fetchAllOrders = createAsyncThunk<Order[], void>(
+    'orders/fetchAll',
+    async () => {
+        const response = await fetch(`${BACKEND_URL}/orders`);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch orders');
+        }
+
+        const data = await response.json();
+
+        return data as Order[];
     },
-    {
-        id: 2,
-        title: 'Order 2 very long name example to check overflow giroe glkadf gkljdsfh gkdjfhg irueh gi',
-        date: '2017-06-29 12:09:33',
-        description: 'desc',
-    },
-    {
-        id: 3,
-        title: 'Order 3',
-        date: '2017-06-29 12:09:33',
-        description: 'desc',
-    },
-];
+);
 
 const orders = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        remove(state: ordersState[] , action: PayloadAction<number>) {
-            return state.filter((order: ordersState) => order.id !== action.payload);
+        remove(state, action: PayloadAction<number>) {
+            state.orders = state.orders.filter(
+                (order: Order) => order.id !== action.payload,
+            );
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchAllOrders.pending, (state) => {
+                state.loading = 'pending';
+                state.error = null;
+            })
+            .addCase(
+                fetchAllOrders.fulfilled,
+                (state, action: PayloadAction<Order[]>) => {
+                    state.loading = 'succeeded';
+                    state.error = null;
+                    state.orders = action.payload;
+                },
+            )
+            .addCase(fetchAllOrders.rejected, (state, action) => {
+                state.loading = 'failed';
+                state.error =
+                    action.error.message || 'An unknown error occurred';
+                state.orders = [];
+            });
     },
 });
 
-export const { remove } = orders.actions;
 export default orders.reducer;
+export const { remove } = orders.actions;

@@ -1,21 +1,29 @@
 'use client';
 
-import { useSelector } from 'react-redux';
 import { RootState } from '@/src/store';
 import Order from './components/Order';
 import addButtonIcon from './icons/add-button.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import OrderDetails from './components/OrderDetails';
+import { fetchAllOrders } from '@/src/store/slices/orders';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 
 export default function Home() {
-    const orderItems = useSelector((state: RootState) => state.orders);
+    const dispatch = useAppDispatch();
+    const orderItems = useAppSelector(
+        (state: RootState) => state.orders.orders,
+    );
     const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
     const [isRendered, setIsRendered] = useState<boolean>(false);
 
     useEffect(() => {
         setIsRendered(true);
     }, []);
+
+    useEffect(() => {
+        dispatch(fetchAllOrders());
+    }, [dispatch]);
 
     const handleShowOrderDetails = (orderId: number) => {
         setOpenedOrderId(orderId);

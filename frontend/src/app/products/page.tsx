@@ -12,7 +12,7 @@ const filterTypes = {
 };
 
 export default function Home() {
-    const orderItems = useSelector((state: RootState) => state.orders);
+    const orderItems = useSelector((state: RootState) => state.orders.orders);
     const productItems = useSelector((state: RootState) => state.products);
     const [typeFilter, setTypeFilter] = useState(filterTypes.none);
     const [isRendered, setIsRendered] = useState<boolean>(false);

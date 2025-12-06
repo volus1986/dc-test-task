@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
+import { BACKEND_URL } from '@/lib/config';
 
 export default function ActiveClientCounter() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        if (!process.env.NEXT_PUBLIC_BACKEND_URL) {
-            console.error('env "NEXT_PUBLIC_BACKEND_URL" is not defined');
-        }
-
-        const socket = io(
-            process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:3001',
-        );
+        const socket = io(BACKEND_URL);
 
         socket.on('activeCount', (value) => {
             setCount(value);

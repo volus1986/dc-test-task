@@ -12,7 +12,7 @@ type Props = {
 
 export default function OrderDetails({ orderId, onCloseCallback }: Props) {
     const order = useSelector((state: RootState) =>
-        state.orders.find((order) => order.id === orderId),
+        state.orders.orders.find((order) => order.id === orderId),
     );
 
     const orderProducts = useSelector((state: RootState) =>
