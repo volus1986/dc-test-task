@@ -1,8 +1,0 @@
-{
-  "name": "dc-test-task",
-  "private": true,
-  "workspaces": [
-    "backend",
-    "frontend"
-  ]
-}

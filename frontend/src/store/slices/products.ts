@@ -123,7 +123,7 @@ const initialState: ProductsState[] = [
         isNew: 1,
         photo: '/pathToFile.jpg',
         title: 'Product 1',
-        type: 'Monitors',
+        type: 'Laptops',
         specification: 'Specification 1',
         guarantee: {
             start: '2017-06-29 12:09:33',
@@ -180,7 +180,7 @@ const initialState: ProductsState[] = [
         isNew: 1,
         photo: '/pathToFile.jpg',
         title: 'Product 1',
-        type: 'Monitors',
+        type: 'Laptops',
         specification: 'Specification 1',
         guarantee: {
             start: '2017-06-29 12:09:33',
