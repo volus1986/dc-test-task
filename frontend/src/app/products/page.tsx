@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/src/store';
 import Product from './components/Product';
 import { SetStateAction, useEffect, useState } from 'react';
+import { useAppDispatch } from '@/src/store/hooks';
+import { fetchAllProducts } from '@/src/store/slices/products';
 
 const filterTypes = {
     none: '',
@@ -11,15 +13,24 @@ const filterTypes = {
     laptops: 'Laptops',
 };
 
-export default function Home() {
+export default function Products() {
+    const dispatch = useAppDispatch();
     const orderItems = useSelector((state: RootState) => state.orders.orders);
-    const productItems = useSelector((state: RootState) => state.products);
+    const productItems = useSelector(
+        (state: RootState) => state.products.products,
+    );
     const [typeFilter, setTypeFilter] = useState(filterTypes.none);
     const [isRendered, setIsRendered] = useState<boolean>(false);
 
     useEffect(() => {
         setIsRendered(true);
     }, []);
+
+    useEffect(() => {
+        dispatch(fetchAllProducts());
+    }, [dispatch]);
+
+    useEffect(() => {}, []);
 
     const handleChangeTypeFilter = (e: {
         target: { value: SetStateAction<string> };

@@ -10,7 +10,7 @@ import { fetchAllOrders } from '@/src/store/slices/orders';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fetchAllProducts } from '@/src/store/slices/products';
 
-export default function Home() {
+export default function Orders() {
     const dispatch = useAppDispatch();
     const orderItems = useAppSelector(
         (state: RootState) => state.orders.orders,
