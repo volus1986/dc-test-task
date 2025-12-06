@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import orders from './entities/orders';
+import { orders, getNewOrders } from './entities/orders';
+import { products, getNewProducts } from '../products/entities/products';
 
 @Injectable()
 export class OrdersService {
@@ -22,6 +23,27 @@ export class OrdersService {
   }
 
   remove(id: number) {
+    orders.splice(
+      orders.findIndex((order) => order.id === id),
+      1,
+    );
+
+    for (let i = products.length - 1; i >= 0; i--) {
+      if (products[i].order === id) {
+        products.splice(i, 1);
+      }
+    }
+
+    // restore data after delete, for test purposes
+    if (!orders.length) {
+      setTimeout(() => {
+        console.log('Data is empty. Restoring...');
+
+        orders.push(...getNewOrders());
+        products.push(...getNewProducts());
+      }, 1000);
+    }
+
     return `This action removes a #${id} order`;
   }
 }
