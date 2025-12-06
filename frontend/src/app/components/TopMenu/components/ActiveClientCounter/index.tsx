@@ -7,7 +7,11 @@ export default function ActiveClientCounter() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        const socket = io('http://localhost:3001');
+        if (!process.env.NEXT_PUBLIC_BACKEND_URL) {
+            console.error('env "NEXT_PUBLIC_BACKEND_URL" is not defined');
+        }
+
+        const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL);
 
         socket.on('activeCount', (value) => {
             setCount(value);
