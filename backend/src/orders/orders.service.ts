@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { orders, getNewOrders } from './entities/orders';
-import { products, getNewProducts } from '../products/entities/products';
+import { orders, initOrders } from './entities/orders';
+import { products, initProducts } from '../products/entities/products';
 
 @Injectable()
 export class OrdersService {
@@ -28,6 +28,7 @@ export class OrdersService {
       1,
     );
 
+    // remove products depends on order
     for (let i = products.length - 1; i >= 0; i--) {
       if (products[i].order === id) {
         products.splice(i, 1);
@@ -39,8 +40,8 @@ export class OrdersService {
       setTimeout(() => {
         console.log('Data is empty. Restoring...');
 
-        orders.push(...getNewOrders());
-        products.push(...getNewProducts());
+        initOrders();
+        initProducts();
       }, 1000);
     }
 

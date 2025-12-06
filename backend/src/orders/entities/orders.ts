@@ -7,8 +7,10 @@ export type Order = {
   description: string;
 };
 
-export function getNewOrders() {
-  return [
+export let orders: Order[];
+
+export function initOrders() {
+  orders = [
     {
       id: 1,
       title:
@@ -32,4 +34,4 @@ export function getNewOrders() {
   ] as Order[];
 }
 
-export const orders = getNewOrders();
+initOrders();

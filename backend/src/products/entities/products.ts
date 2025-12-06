@@ -21,8 +21,10 @@ type Product = {
   date: string;
 };
 
-export function getNewProducts(): Product[] {
-  return [
+export let products;
+
+export function initProducts() {
+  products = [
     {
       id: 1,
       serialNumber: 1234,
@@ -198,4 +200,4 @@ export function getNewProducts(): Product[] {
   ];
 }
 
-export const products = getNewProducts();
+initProducts();
