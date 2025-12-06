@@ -32,7 +32,7 @@ export default function Order({
     const dispatch = useDispatch();
     const RemovePopup = usePopup();
     const orderProducts = useSelector(
-        (state: RootState) => state.products,
+        (state: RootState) => state.products.products,
     ).filter((product) => product.order === id);
 
     const date = parseDateTimeString(dateTimeString);

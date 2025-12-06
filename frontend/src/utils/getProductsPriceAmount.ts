@@ -16,11 +16,4 @@ export default function getProductPricesAmount(
         });
 
     return amount;
-
-    // return prices
-    //     .map((priceArray: { value: number; symbol: string }[]) =>
-    //         priceArray.find((price) => price.symbol === symbol),
-    //     )
-    //     .map((price) => price?.value ?? 0)
-    //     .reduce((total, price) => total + price, 0);
 }

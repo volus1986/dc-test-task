@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import OrderDetails from './components/OrderDetails';
 import { fetchAllOrders } from '@/src/store/slices/orders';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { fetchAllProducts } from '@/src/store/slices/products';
 
 export default function Home() {
     const dispatch = useAppDispatch();
@@ -23,6 +24,10 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(fetchAllOrders());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchAllProducts());
     }, [dispatch]);
 
     const handleShowOrderDetails = (orderId: number) => {

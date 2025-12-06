@@ -16,7 +16,7 @@ export default function OrderDetails({ orderId, onCloseCallback }: Props) {
     );
 
     const orderProducts = useSelector((state: RootState) =>
-        state.products.filter((product) => product.order === orderId),
+        state.products.products.filter((product) => product.order === orderId),
     );
 
     const productElements = orderProducts.map((product) => {
