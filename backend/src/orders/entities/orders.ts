@@ -1,4 +1,4 @@
-export type Orders = {
+export type Order = {
   id: number;
   title: string;
   date: string;
@@ -26,4 +26,4 @@ export default [
     date: '2017-06-29 12:09:33',
     description: 'desc',
   },
-];
+] as Order[];
