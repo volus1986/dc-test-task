@@ -5,12 +5,17 @@ import { RootState } from '@/src/store';
 import Order from './components/Order';
 import addButtonIcon from './icons/add-button.png';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import OrderDetails from './components/OrderDetails';
 
 export default function Home() {
     const orderItems = useSelector((state: RootState) => state.orders);
     const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
+    const [isRendered, setIsRendered] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsRendered(true);
+    }, []);
 
     const handleShowOrderDetails = (orderId: number) => {
         setOpenedOrderId(orderId);
@@ -35,7 +40,12 @@ export default function Home() {
     });
 
     return (
-        <div className="pl-32 mt-16 w-full h-fit">
+        <div
+            className={`
+                pl-32 mt-16 w-full h-fit
+                transition-opacity duration-500 ease-in-out ${isRendered ? 'opacity-100' : 'opacity-0'}
+            `}
+        >
             <div className="flex items-center gap-4">
                 <button className="rounded-full cursor-pointer">
                     <Image

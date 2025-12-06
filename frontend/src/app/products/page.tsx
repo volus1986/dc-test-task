@@ -3,7 +3,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '@/src/store';
 import Product from './components/Product';
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 
 const filterTypes = {
     none: '',
@@ -15,6 +15,11 @@ export default function Home() {
     const orderItems = useSelector((state: RootState) => state.orders);
     const productItems = useSelector((state: RootState) => state.products);
     const [typeFilter, setTypeFilter] = useState(filterTypes.none);
+    const [isRendered, setIsRendered] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsRendered(true);
+    }, []);
 
     const handleChangeTypeFilter = (e: {
         target: { value: SetStateAction<string> };
@@ -52,7 +57,12 @@ export default function Home() {
         });
 
     return (
-        <div className="px-32 pt-16 w-full h-fit">
+        <div
+            className={`
+            px-32 pt-16 w-full h-fit
+            transition-opacity duration-500 ease-in-out ${isRendered ? 'opacity-100' : 'opacity-0'}
+        `}
+        >
             <div className="flex">
                 <div className="font-extrabold flex items-center">
                     Продукты / {productItems.length}
