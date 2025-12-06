@@ -13,7 +13,7 @@ Installation steps:
 **For run as prod:**
 1. docker-compose -f docker-compose.prod.yml build
 2. docker-compose -f docker-compose.prod.yml up -d
-3. open site url: http://localhost:3000 (Also you can see this link in console)
+3. open site url: http://localhost:3000 (It may be changed after real deploy)
 
 <br>
 
