@@ -11,7 +11,9 @@ export default function ActiveClientCounter() {
             console.error('env "NEXT_PUBLIC_BACKEND_URL" is not defined');
         }
 
-        const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL);
+        const socket = io(
+            process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:3001',
+        );
 
         socket.on('activeCount', (value) => {
             setCount(value);
