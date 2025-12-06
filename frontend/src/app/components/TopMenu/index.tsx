@@ -1,5 +1,6 @@
 import Title from './components/Title';
 import DateTime from '@/src/app/components/TopMenu/components/DateTime';
+import ActiveClientCounter from '@/src/app/components/TopMenu/components/ActiveClientCounter';
 
 export default function TopMenu() {
     return (
@@ -13,7 +14,10 @@ export default function TopMenu() {
         >
             <div className={`w-full flex justify-between`}>
                 <Title />
-                <DateTime />
+                <div className="flex shrink-0 grow-0">
+                    <DateTime />
+                    <ActiveClientCounter />
+                </div>
             </div>
         </div>
     );
