@@ -32,8 +32,8 @@ const orders = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        remove(state, action: PayloadAction<number>) {
-            return state.filter((order) => order.id !== action.payload);
+        remove(state: ordersState[] , action: PayloadAction<number>) {
+            return state.filter((order: ordersState) => order.id !== action.payload);
         },
     },
 });

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type productsState = {
+type ProductsState = {
     id: number;
     serialNumber: number | string;
     isNew: number;
@@ -21,7 +21,7 @@ type productsState = {
     date: string;
 };
 
-const initialState: productsState[] = [
+const initialState: ProductsState[] = [
     {
         id: 1,
         serialNumber: 1234,
@@ -136,17 +136,82 @@ const initialState: productsState[] = [
         order: 2,
         date: '2017-06-29 12:09:33',
     },
+    {
+        id: 7,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 3,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 8,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 3,
+        date: '2017-06-29 12:09:33',
+    },
+    {
+        id: 9,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: '/pathToFile.jpg',
+        title: 'Product 1',
+        type: 'Monitors',
+        specification: 'Specification 1',
+        guarantee: {
+            start: '2017-06-29 12:09:33',
+            end: '2017-06-29 12:09:33',
+        },
+        price: [
+            { value: 100, symbol: 'USD', isDefault: 0 },
+            { value: 2600, symbol: 'UAH', isDefault: 1 },
+        ],
+        order: 3,
+        date: '2017-06-29 12:09:33',
+    },
 ];
 
 const products = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        remove(state, action: PayloadAction<number>) {
-            state.filter((order) => order.id !== action.payload);
+        remove(state: ProductsState[], action: PayloadAction<number>) {
+            return state.filter(
+                (product: ProductsState) => product.id !== action.payload,
+            );
+        },
+        removeByOrder(state: ProductsState[], action: PayloadAction<number>) {
+            return state.filter(
+                (product: ProductsState) => product.order !== action.payload,
+            );
         },
     },
 });
 
-export const { remove } = products.actions;
+export const { remove, removeByOrder } = products.actions;
+
 export default products.reducer;
