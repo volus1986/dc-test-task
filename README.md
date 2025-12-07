@@ -14,10 +14,15 @@ User can:<br>
 <br>
 
 **Local installation steps:**
-1. Clone repository https://github.com/volus1986/dc-test-task
-2. Install docker (& docker compose if it necessary)
-3. Install Node.js & NPM (lts, lartest) for yours OS
-4. docker compose build --no-cache
+1. Install docker (& docker compose if it necessary)
+2. Install Node.js & NPM (lts, lartest) for yours OS
+3. install git
+
+4. open terminal (in necessary folder)
+5. clone repository: git clone https://github.com/volus1986/dc-test-task
+6. open repository folder: cd dc-test-task
+
+7. build image: docker compose build --no-cache
 
 
 **Local run:**
