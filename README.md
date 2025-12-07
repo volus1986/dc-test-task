@@ -1,14 +1,10 @@
 **Test task: SPA-application: Orders & Products** 
 
-User can:<br>
-1. see Orders & order details
-<br>
-2. remove Orders
-<br>
-3. see Products
-<br>
+**User can:**
+1. see orders & order details
+2. remove orders
+3. see products & filter them
 4. see number of connected clients
-<br>
 5. see current date & time
 
 <br>
@@ -24,11 +20,13 @@ User can:<br>
 
 7. build image: docker compose build --no-cache
 
+<br>
 
 **Local run:**
 1. docker compose up
 2. open site url: http://localhost:3000 (Also you can see this link in console)
 
+<br>
 
 **For development also need to install local dependencies (to highlight you code in IDE)**
 
