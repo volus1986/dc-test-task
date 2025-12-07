@@ -20,7 +20,6 @@ RUN npm run build
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-
 COPY --from=base /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
@@ -28,11 +27,11 @@ COPY package.json .
 
 
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_BACKEND_URL=dc-test-task-be.onrender.com
-ENV BACKEND_SERVICE_PORT=443
+
+ENV NEXT_PUBLIC_BACKEND_SERVICE_URL=dc-test-task-be.onrender.com
+ENV NEXT_PUBLIC_BACKEND_SERVICE_PORT=443
 
 
 # EXPOSE 3000
 
-# Запуск Next.js production server
 CMD ["npm", "start"]

@@ -33,8 +33,9 @@ services:
 
     environment:
       NODE_ENV: development
-      NEXT_PUBLIC_BACKEND_URL: http://localhost
-      BACKEND_SERVICE_PORT: 3001
+
+      NEXT_PUBLIC_BACKEND_SERVICE_URL: http://localhost
+      NEXT_PUBLIC_BACKEND_SERVICE_PORT: 3001
 
     depends_on:
       - backend
