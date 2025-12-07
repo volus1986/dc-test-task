@@ -52,18 +52,7 @@ const initialState: ProductsState = {
 const products = createSlice({
     name: 'products',
     initialState,
-    reducers: {
-        remove(state: ProductsState, action: PayloadAction<number>) {
-            state.products = state.products.filter(
-                (product: Product) => product.id !== action.payload,
-            );
-        },
-        removeByOrder(state: ProductsState, action: PayloadAction<number>) {
-            state.products = state.products.filter(
-                (product: Product) => product.order !== action.payload,
-            );
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchAllProducts.pending, (state) => {
@@ -86,7 +75,5 @@ const products = createSlice({
             });
     },
 });
-
-export const { remove, removeByOrder } = products.actions;
 
 export default products.reducer;

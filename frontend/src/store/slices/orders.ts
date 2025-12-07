@@ -35,16 +35,25 @@ export const fetchAllOrders = createAsyncThunk<Order[], void>(
     },
 );
 
+export const deleteOrder = createAsyncThunk<number, number>(
+    'orders/delete',
+    async (orderId, { rejectWithValue }) => {
+        const response = await fetch(`${BACKEND_URL}/orders/${orderId}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            return rejectWithValue(`Failed to delete order ID: ${orderId}`);
+        }
+
+        return orderId;
+    },
+);
+
 const orders = createSlice({
     name: 'orders',
     initialState,
-    reducers: {
-        remove(state, action: PayloadAction<number>) {
-            state.orders = state.orders.filter(
-                (order: Order) => order.id !== action.payload,
-            );
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchAllOrders.pending, (state) => {
@@ -64,9 +73,23 @@ const orders = createSlice({
                 state.error =
                     action.error.message || 'An unknown error occurred';
                 state.orders = [];
+            })
+            .addCase(deleteOrder.pending, (state) => {
+                state.loading = 'pending';
+                state.error = null;
+            })
+            .addCase(
+                deleteOrder.fulfilled,
+                (state, action: PayloadAction<number>) => {
+                    state.orders = state.orders.filter(
+                        (order) => order.id !== action.payload,
+                    );
+                },
+            )
+            .addCase(deleteOrder.rejected, (state, action) => {
+                state.error = (action.payload as string) || 'Deletion failed';
             });
     },
 });
 
 export default orders.reducer;
-export const { remove } = orders.actions;

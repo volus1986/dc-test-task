@@ -5,12 +5,12 @@ import buttonProductListIcon from '@/src/assets/icons/button-products-list-gray.
 import parseDateTimeString from '@/src/utils/parseDateString';
 import getProductLengthText from '@/src/utils/getProductLengthText';
 import ButtonIcon from '@/src/components/ButtonIcon';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/src/store';
 import getProductPricesAmount from '@/src/utils/getProductsPriceAmount';
 import usePopup from '@/src/components/RemovePopup';
-import { remove } from '@/src/store/slices/orders';
-import { removeByOrder } from '@/src/store/slices/products';
+import { useAppDispatch } from '@/src/store/hooks';
+import { deleteOrder } from '@/src/store/slices/orders';
 
 type propsType = {
     id: number;
@@ -29,7 +29,7 @@ export default function Order({
     isOpened,
     showOrderDetailsHandler,
 }: propsType) {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const RemovePopup = usePopup();
     const orderProducts = useSelector(
         (state: RootState) => state.products.products,
@@ -48,8 +48,8 @@ export default function Order({
         RemovePopup.openPopup({
             title: 'Вы уверены что хотите удалить этот приход?',
             onAccept: () => {
-                dispatch(removeByOrder(id));
-                dispatch(remove(id));
+                dispatch(deleteOrder(id));
+
                 console.log(`Order with id ${id} was removed`);
             },
             onDecline: () => {
