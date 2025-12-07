@@ -28,7 +28,8 @@ services:
 
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_BACKEND_URL: http://backend:3001
+      NEXT_PUBLIC_BACKEND_URL: dc-test-task-be.onrender.com
+      BACKEND_SERVICE_PORT: 443
 
     depends_on:
       - backend
