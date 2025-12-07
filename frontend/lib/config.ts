@@ -1,7 +1,10 @@
-const url = process.env.NEXT_PUBLIC_BACKEND_SERVICE_URL ?? 'http://localhost';
-const port = process.env.NEXT_PUBLIC_BACKEND_SERVICE_PORT ?? '3001';
+const url = process.env.NEXT_PUBLIC_BACKEND_SERVICE_URL;
+const port = process.env.NEXT_PUBLIC_BACKEND_SERVICE_PORT;
 
-const hasPort = /:\d+$/.test(url);
+export const BACKEND_URL = (() => {
+    if (!url) return `http://localhost:${port ?? 3001}`;
 
-export const BACKEND_URL = port && !hasPort ? `${url}:${port}` : url;
-console.log(BACKEND_URL);
+    const hasPort = /:\d+$/.test(url);
+
+    return port && !hasPort ? `${url}:${port}` : url;
+})();
