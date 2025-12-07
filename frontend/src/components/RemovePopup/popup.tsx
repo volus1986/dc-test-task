@@ -1,7 +1,7 @@
 import closeIcon from '@/src/assets/icons/x-gray.svg';
 import trashIcon from '@/src/assets/icons/trash-red.svg';
 import Image from 'next/image';
-import { ReactNode, useEffect, useState  } from 'react';
+import { ReactNode, useEffect, useState, MouseEvent } from 'react';
 
 export type PopupOptions = {
     title: string;
@@ -22,11 +22,13 @@ export default function Popup({
         setIsRendered(true);
     }, []);
 
-    const handleAccept = () => {
+    const handleAccept = (e: MouseEvent) => {
+        e.stopPropagation();
         onAccept?.();
     };
 
-    const handleDecline = () => {
+    const handleDecline = (e: MouseEvent) => {
+        e.stopPropagation();
         onDecline?.();
     };
 
@@ -38,7 +40,10 @@ export default function Popup({
             `}
             onClick={handleDecline}
         >
-            <div className="relative bg-white w-[798px]">
+            <div
+                className="relative bg-white w-[798px]"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <button
                     className="absolute -right-6 -top-6
                     bg-white cursor-pointer w-11 h-11 shadow-[4px_4px_8px_rgba(0,0,0,0.25)]
