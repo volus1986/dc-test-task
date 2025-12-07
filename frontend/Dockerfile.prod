@@ -16,8 +16,8 @@ COPY . .
 
 ENV NODE_ENV=production
 
-ENV NEXT_PUBLIC_BACKEND_SERVICE_URL=dc-test-task-be.onrender.com
-ENV NEXT_PUBLIC_BACKEND_SERVICE_PORT=80
+ENV NEXT_PUBLIC_BACKEND_SERVICE_URL=https://dc-test-task-be.onrender.com
+# ENV NEXT_PUBLIC_BACKEND_SERVICE_PORT=80
 
 RUN npm run build
 
