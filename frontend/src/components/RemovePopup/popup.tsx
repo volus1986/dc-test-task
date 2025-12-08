@@ -57,13 +57,10 @@ export default function Popup({
                         alt="close"
                     />
                 </button>
-                <div className="pt-9 px-9 border-b border-b-[#f0f3f5]">
-                    <div className="w-full min-h-[88]">
-                        <p className="">{title}</p>
-                    </div>
-
-                    {content}
+                <div className="pt-9 px-9 w-full min-h-[88] border-b border-b-[#f0f3f5]">
+                    <p className="font-extrabold text-xl">{title}</p>
                 </div>
+                <div className="w-full p-9">{content}</div>
                 <div className="pt-[14px] px-9 pb-[18px] flex justify-end h-[116px] items-center gap-5 bg-[#86bd47] w-full">
                     <button
                         className="text-white font-bold cursor-pointer"

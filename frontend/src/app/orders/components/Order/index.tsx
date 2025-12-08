@@ -44,9 +44,18 @@ export default function Order({
     const prices = orderProducts.map((orderProduct) => orderProduct.price);
     const priceAmount = getProductPricesAmount(prices);
 
+    const removePopupContentRender = (
+        <div className="w-full flex">
+            <div className="underline decoration-gray-500 text-nowrap overflow-hidden">
+                {title}
+            </div>
+        </div>
+    );
+
     const removeOrderClickHandler = () => {
         RemovePopup.openPopup({
             title: 'Вы уверены что хотите удалить этот приход?',
+            content: removePopupContentRender,
             onAccept: () => {
                 dispatch(deleteOrder(id));
 
