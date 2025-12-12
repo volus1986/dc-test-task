@@ -54,7 +54,7 @@ export default function Order({
 
     const removeOrderClickHandler = () => {
         RemovePopup.openPopup({
-            title: 'Вы уверены что хотите удалить этот приход?',
+            title: 'Are you sure you want to delete this order?',
             content: removePopupContentRender,
             onAccept: () => {
                 dispatch(deleteOrder(id));

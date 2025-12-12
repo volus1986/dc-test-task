@@ -5,11 +5,11 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
     {
-        name: 'ПРИХОД',
+        name: 'ORDERS',
         href: '/orders',
     },
     {
-        name: 'ПРОДУКТЫ',
+        name: 'PRODUCTS',
         href: '/products',
     },
 ];

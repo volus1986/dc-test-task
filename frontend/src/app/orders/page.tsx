@@ -69,7 +69,7 @@ export default function Orders() {
                     />
                 </button>
                 <span className="font-extrabold">
-                    Приходы / {orderItems.length}
+                    Orders / {orderItems.length}
                 </span>
             </div>
             <div className="flex mt-14">

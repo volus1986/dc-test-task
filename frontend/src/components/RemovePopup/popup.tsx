@@ -66,7 +66,7 @@ export default function Popup({
                         className="text-white font-bold cursor-pointer"
                         onClick={handleDecline}
                     >
-                        ОТМЕНИТЬ
+                        CANCEL
                     </button>
                     <button
                         className="h-10 w-[178px] text-[#e8364f] flex justify-center items-center gap-4 rounded-full bg-white cursor-pointer"
@@ -78,7 +78,7 @@ export default function Popup({
                             width={12}
                             height={12}
                         />
-                        УДАЛИТЬ
+                        REMOVE
                     </button>
                 </div>
             </div>

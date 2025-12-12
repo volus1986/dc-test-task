@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import { BACKEND_URL } from '@/lib/config';
+import { BACKEND_URL } from '@/src/lib/config';
 
 export default function ActiveClientCounter() {
     const [count, setCount] = useState(0);

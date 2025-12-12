@@ -42,9 +42,9 @@ export default function Product({
 
     const statusTextRender = () => {
         if (status === STATUSES.free) {
-            return <span className="text-[#cddc39]">свободен</span>;
+            return <span className="text-[#cddc39]">Free</span>;
         } else {
-            return <span className="text-black">В ремонте</span>;
+            return <span className="text-black">Repairing</span>;
         }
     };
 
@@ -55,13 +55,13 @@ export default function Product({
             <div>
                 <div className="flex justify-between">
                     <div className="flex items-center text-[10px] text-[#90a4ae]">
-                        c
+                        from
                     </div>
                     <div className="text-[14px] text-[#546e7a]">{`${dateFrom.day} / ${dateFrom.monthNumber} / ${dateFrom.year}`}</div>
                 </div>
                 <div className="flex justify-between">
                     <div className="flex items-center text-[10px] text-[#90a4ae]">
-                        по
+                        to
                     </div>
                     <div className="text-[14px] text-[#546e7a]">{`${dateTo.day} / ${dateTo.monthNumber} / ${dateTo.year}`}</div>
                 </div>
@@ -103,7 +103,7 @@ export default function Product({
                 <div className="ml-2 w-28">{guaranteeDatesRender()}</div>
 
                 <div className="ml-10 w-32 text-[14px] text-[#546e7a]">
-                    {isNew ? 'новый' : 'Б / У'}
+                    {isNew ? 'New' : 'Used'}
                 </div>
 
                 <div className="ml-2 w-[140px]">

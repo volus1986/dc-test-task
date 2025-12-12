@@ -76,10 +76,10 @@ export default function Products() {
         >
             <div className="flex">
                 <div className="font-extrabold flex items-center">
-                    Продукты / {productItems.length}
+                    Products / {productItems.length}
                 </div>
                 <div className="flex ml-7 items-center">
-                    <span className="text-[#90a4ae]">Тип:</span>
+                    <span className="text-[#90a4ae]">Type</span>
                     <select
                         className="ml-2.5 w-[330px] bg-white border border-[#d1d9dd] rounded-sm px-3 py-2 align-middle"
                         onChange={handleChangeTypeFilter}

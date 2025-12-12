@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { BACKEND_URL } from '@/lib/config';
+import { BACKEND_URL } from '@/src/lib/config';
 
 type Order = {
     id: number;
