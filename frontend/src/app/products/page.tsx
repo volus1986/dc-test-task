@@ -1,10 +1,8 @@
 'use client';
 
-import { useSelector } from 'react-redux';
-import { RootState } from '@/src/store';
 import Product from './components/Product';
 import { SetStateAction, useEffect, useState } from 'react';
-import { useAppDispatch } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fetchAllProducts } from '@/src/store/slices/products';
 
 const filterTypes = {
@@ -15,10 +13,8 @@ const filterTypes = {
 
 export default function Products() {
     const dispatch = useAppDispatch();
-    const orderItems = useSelector((state: RootState) => state.orders.orders);
-    const productItems = useSelector(
-        (state: RootState) => state.products.products,
-    );
+    const orderItems = useAppSelector((state) => state.orders.orders);
+    const productItems = useAppSelector((state) => state.products.products);
     const [typeFilter, setTypeFilter] = useState(filterTypes.none);
     const [isRendered, setIsRendered] = useState<boolean>(false);
 

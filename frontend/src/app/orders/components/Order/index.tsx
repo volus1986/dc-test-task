@@ -5,8 +5,7 @@ import buttonProductListIcon from '@/src/assets/icons/button-products-list-gray.
 import parseDateTimeString from '@/src/utils/parseDateString';
 import getProductLengthText from '@/src/utils/getProductLengthText';
 import ButtonIcon from '@/src/components/ButtonIcon';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/src/store';
+import { useAppSelector } from '@/src/store/hooks';
 import getProductPricesAmount from '@/src/utils/getProductsPriceAmount';
 import usePopup from '@/src/components/RemovePopup';
 import { useAppDispatch } from '@/src/store/hooks';
@@ -31,8 +30,8 @@ export default function Order({
 }: propsType) {
     const dispatch = useAppDispatch();
     const RemovePopup = usePopup();
-    const orderProducts = useSelector(
-        (state: RootState) => state.products.products,
+    const orderProducts = useAppSelector(
+        (state) => state.products.products,
     ).filter((product) => product.order === id);
 
     const date = parseDateTimeString(dateTimeString);

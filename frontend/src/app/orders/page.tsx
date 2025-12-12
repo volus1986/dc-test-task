@@ -1,6 +1,5 @@
 'use client';
 
-import { RootState } from '@/src/store';
 import Order from './components/Order';
 import addButtonIcon from './icons/add-button.png';
 import Image from 'next/image';
@@ -12,9 +11,7 @@ import { fetchAllProducts } from '@/src/store/slices/products';
 
 export default function Orders() {
     const dispatch = useAppDispatch();
-    const orderItems = useAppSelector(
-        (state: RootState) => state.orders.orders,
-    );
+    const orderItems = useAppSelector((state) => state.orders.orders);
     const [openedOrderId, setOpenedOrderId] = useState<number | null>(null);
     const [isRendered, setIsRendered] = useState<boolean>(false);
 

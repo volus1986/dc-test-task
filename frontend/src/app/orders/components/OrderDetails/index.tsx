@@ -1,7 +1,6 @@
 import plusIcon from '@/src/assets/icons/plus-white.svg';
 import closeIcon from '@/src/assets/icons/x-gray.svg';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/src/store';
+import { useAppSelector } from '@/src/store/hooks';
 import OrderProduct from '@/src/app/orders/components/OrderDetails/components/OrderProduct';
 import { STATUSES } from '@/src/app/components/ProductStatusIcon';
 
@@ -11,11 +10,11 @@ type Props = {
 };
 
 export default function OrderDetails({ orderId, onCloseCallback }: Props) {
-    const order = useSelector((state: RootState) =>
+    const order = useAppSelector((state) =>
         state.orders.orders.find((order) => order.id === orderId),
     );
 
-    const orderProducts = useSelector((state: RootState) =>
+    const orderProducts = useAppSelector((state) =>
         state.products.products.filter((product) => product.order === orderId),
     );
 
