@@ -21,7 +21,7 @@ type Product = {
   date: string;
 };
 
-export let products;
+export let products: Product[];
 
 export function initProducts() {
   products = [
@@ -50,7 +50,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 2',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -69,7 +69,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 3',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -88,7 +88,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 4',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -107,7 +107,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 5',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -126,7 +126,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 6',
       type: 'Laptops',
       specification: 'Specification 1',
       guarantee: {
@@ -145,7 +145,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 7',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -164,7 +164,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 8',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -183,7 +183,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 1',
+      title: 'Product 9',
       type: 'Laptops',
       specification: 'Specification 1',
       guarantee: {
