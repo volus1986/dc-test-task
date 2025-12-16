@@ -1,5 +1,11 @@
 **Test task: SPA-application: Orders & Products** 
 
+Dev. stack:
+1. React, Typescript
+2. Redux, Redux Toolkit, RTK Query, Websocket
+3. CSS, Tailwind
+4. Docker (ready for deploy as 2 separate containers)
+
 **User can:**
 1. see orders & order details
 2. remove orders
