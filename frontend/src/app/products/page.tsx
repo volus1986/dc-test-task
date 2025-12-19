@@ -4,6 +4,7 @@ import Product from './components/Product';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fetchAllProducts } from '@/src/store/slices/products';
+import { fetchAllOrders } from '@/src/store/slices/orders';
 
 const filterTypes = {
     none: '',
@@ -24,6 +25,7 @@ export default function Products() {
 
     useEffect(() => {
         dispatch(fetchAllProducts());
+        dispatch(fetchAllOrders());
     }, [dispatch]);
 
     useEffect(() => {}, []);
