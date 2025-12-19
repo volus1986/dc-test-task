@@ -31,7 +31,7 @@ export function initProducts() {
       isNew: 1,
       photo: '/pathToFile.jpg',
       title:
-        'Product 1 very long name example to check overflow asdkljfh askjdfh sakdjfh sajkdfh asdkjfh asdkjfh asdkjfh asdkjfh asdkjfh 12345',
+        'Product 1 very long name example. Very long name. A lot letters can be here, even more text continues here, just extending the same long string further and further. ',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -50,7 +50,7 @@ export function initProducts() {
       serialNumber: 1234,
       isNew: 1,
       photo: '/pathToFile.jpg',
-      title: 'Product 2',
+      title: 'Product 2 -- usual name example. Just for example.',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {

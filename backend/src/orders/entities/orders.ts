@@ -14,14 +14,13 @@ export function initOrders() {
     {
       id: 1,
       title:
-        'Order 1 very long name example to check overflow askdjfhkasdfh gksajgdfh dksfjgh asdfg askjdfh saikjdfh difughsidufhg ksdjfh iuwe fiasdf hsakdfh iuse',
+        'Order 1 -- very long name example. Very long name. A lot letters can be here, even more text continues here, just extending the same long string further and further.',
       date: '2017-06-27 10:07:31',
       description: 'description 1',
     },
     {
       id: 2,
-      title:
-        'Order 2 very long name example to check overflow giroe glkadf gkljdsfh gkdjfhg irueh gi',
+      title: 'Order 2 -- usual name example. Just for example.',
       date: '2017-06-28 11:08:32',
       description: 'description 2',
     },
