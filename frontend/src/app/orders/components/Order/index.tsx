@@ -75,7 +75,7 @@ export default function Order({
                 `}
             >
                 {!showSimplified && (
-                    <div className="flex flex-1 overflow-hidden underline text-nowrap">
+                    <div className="w-full overflow-hidden underline text-nowrap truncate">
                         {title}
                     </div>
                 )}

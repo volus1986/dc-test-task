@@ -1,6 +1,4 @@
-import trashIcon from '@/src/assets/icons/trash-gray.svg';
 import parseDateTimeString from '@/src/utils/parseDateString';
-import ButtonIcon from '@/src/components/ButtonIcon';
 import ProductStatusIcon, {
     STATUSES,
 } from '@/src/app/components/ProductStatusIcon';
@@ -36,10 +34,6 @@ export default function Product({
     orderName,
     orderDateTimeString,
 }: propsType) {
-    const removeProduct = () => {
-        console.log(`Remove order with id: ${id}`); // todo: Placeholder for actual remove logic
-    };
-
     const statusTextRender = () => {
         if (status === STATUSES.free) {
             return <span className="text-[#cddc39]">Free</span>;
@@ -92,7 +86,7 @@ export default function Product({
                 </div>
 
                 <div className="ml-8 w-[432px] overflow-hidden h-full">
-                    <p className="underline decoration-gray-500 text-[14px] text-[#546e7a] text-nowrap overflow-hidden pl-1">
+                    <p className="underline decoration-gray-500 text-[14px] text-[#546e7a] text-nowrap overflow-hidden pl-1 truncate">
                         {title}
                     </p>
                     <p>{serialNumber}</p>
@@ -112,16 +106,16 @@ export default function Product({
                 </div>
 
                 <div className="ml-2 w-[400px] flex overflow-hidden h-full">
-                    <span className="underline decoration-gray-500 text-[14px] text-[#546e7a]">
+                    <span
+                        className="
+                        underline decoration-gray-500 text-[14px] text-[#546e7a]
+                        [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                    >
                         {orderName}
                     </span>
                 </div>
 
                 <div className="ml-2 w-32">{orderDateRender()}</div>
-
-                <div className="ml-7">
-                    <ButtonIcon onClick={removeProduct} iconUrl={trashIcon} />
-                </div>
             </div>
         </div>
     );
