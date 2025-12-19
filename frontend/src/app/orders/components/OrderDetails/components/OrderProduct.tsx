@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import ProductStatusIcon from '@/src/app/components/ProductStatusIcon';
-import ButtonIcon from '@/src/components/ButtonIcon';
-import trashIcon from '@/src/assets/icons/trash-gray.svg';
 
 export type Props = {
     id: number;
@@ -18,10 +16,6 @@ export default function OrderProduct({
     title,
     serialNumber,
 }: Props) {
-    const handleRemove = () => {
-        console.log(`remove product handler for product id: ${id}`);
-    };
-
     return (
         <div
             className="
@@ -40,9 +34,6 @@ export default function OrderProduct({
                     {title}
                 </div>
                 <p>{serialNumber}</p>
-            </div>
-            <div className="flex items-center w-3">
-                <ButtonIcon iconUrl={trashIcon} onClick={handleRemove} />
             </div>
         </div>
     );
