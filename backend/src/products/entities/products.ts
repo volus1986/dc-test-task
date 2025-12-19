@@ -27,7 +27,7 @@ export function initProducts() {
   products = [
     {
       id: 1,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_1',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title:
@@ -47,7 +47,7 @@ export function initProducts() {
     },
     {
       id: 2,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_2',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 2 -- usual name example. Just for example.',
@@ -66,7 +66,7 @@ export function initProducts() {
     },
     {
       id: 3,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_3',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 3',
@@ -85,7 +85,7 @@ export function initProducts() {
     },
     {
       id: 4,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_4',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 4',
@@ -104,7 +104,7 @@ export function initProducts() {
     },
     {
       id: 5,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_5',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 5',
@@ -123,7 +123,7 @@ export function initProducts() {
     },
     {
       id: 6,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_6',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 6',
@@ -142,7 +142,7 @@ export function initProducts() {
     },
     {
       id: 7,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_7',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 7',
@@ -161,7 +161,7 @@ export function initProducts() {
     },
     {
       id: 8,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_8',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 8',
@@ -180,7 +180,7 @@ export function initProducts() {
     },
     {
       id: 9,
-      serialNumber: 1234,
+      serialNumber: 'serial_number_example_9',
       isNew: 1,
       photo: '/pathToFile.jpg',
       title: 'Product 9',
